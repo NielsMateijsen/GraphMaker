@@ -20,6 +20,6 @@ class DataGetter:
         if self.graph_query != "":
             data = conn.query(self.graph_query.format(str(is_guest)))
             conn.close()
-            return sqlio.read_sql_query(data)
+            return data
         conn.close()
         raise Exception("\nEXCEPTION:\ngraph_query is empty")

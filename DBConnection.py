@@ -1,4 +1,5 @@
 from urllib.parse import urlparse
+import pandas.io.sql as sqlio
 
 from dotenv import load_dotenv, find_dotenv
 import os
@@ -30,8 +31,7 @@ class DBConnection:
         self.close()
 
     def query(self, query):
-        self.cursor.execute(query)
-        return self.cursor.fetchall()
+        return sqlio.read_sql(query, self.conn)
 
     def close(self):
         self.cursor.close()
