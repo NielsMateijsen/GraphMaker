@@ -15,7 +15,7 @@ class DataGetter:
         except yaml.YAMLError as e:
             print(e)
 
-    def get_data(self, is_guest):
+    def get_line_graph_data(self, is_guest):
         conn = DBConnection()
         if self.graph_query != "":
             data = conn.query(self.graph_query.format(str(is_guest)))
