@@ -30,7 +30,7 @@ class DataGetter:
         except yaml.YAMLError as e:
             print(e)
 
-    def get_line_graph_data(self, is_guest):
+    def get_chart_data(self, is_guest):
         conn = DBConnection()
 
         if self.graph_query == "":

@@ -21,7 +21,7 @@ class MyTestCase(unittest.TestCase):
     @staticmethod
     def test_get_data_not_none():
         getter = DataGetter()
-        data = getter.get_line_graph_data(False)
+        data = getter.get_chart_data(False)
         assert len(data) > 0
 
 
