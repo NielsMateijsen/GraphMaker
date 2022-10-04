@@ -3,13 +3,13 @@ import unittest
 
 import yaml
 
-from DataGetter import DataGetter
+import data_getter
 
 
 class MyTestCase(unittest.TestCase):
     @staticmethod
     def test_query_string_not_empty():
-        assert DataGetter.graph_query != ""
+        assert data_getter.graph_query != ""
 
     @staticmethod
     def test_yaml_test_string():
@@ -20,8 +20,7 @@ class MyTestCase(unittest.TestCase):
 
     @staticmethod
     def test_get_data_not_none():
-        getter = DataGetter()
-        data = getter.get_chart_data(False)
+        data = data_getter.get_chart_data(False)
         assert len(data) > 0
 
 
