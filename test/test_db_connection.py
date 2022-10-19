@@ -22,7 +22,7 @@ class MyTestCase(unittest.TestCase):
         self.db_connection = DBConnection()
         result = self.db_connection.query("SELECT 1;")
         assert self.db_connection.conn.closed == 0
-        assert result[0][0] == 1
+        assert result.iloc[0][0] == 1
 
     @staticmethod
     def test_env_getter():
