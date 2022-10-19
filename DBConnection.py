@@ -25,14 +25,9 @@ class DBConnection:
             host=hostname,
             port=port
         )
-        self.cursor = self.conn.cursor()
-
-    def __del__(self):
-        self.close()
 
     def query(self, query):
         return sqlio.read_sql(query, self.conn)
 
     def close(self):
-        self.cursor.close()
         self.conn.close()
