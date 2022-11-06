@@ -1,4 +1,3 @@
-from urllib.parse import urlparse
 import pandas.io.sql as sqlio
 
 from dotenv import load_dotenv, find_dotenv
@@ -7,17 +6,16 @@ import psycopg2
 
 
 class DBConnection:
-    uri = ""
 
     def __init__(self):
         load_dotenv(find_dotenv("cred.env"))
-        self.uri = os.getenv("DB_URI")
-        uri_args = urlparse(self.uri)
-        username = uri_args.username
-        password = uri_args.password
-        database = uri_args.path[1:]
-        hostname = uri_args.hostname
-        port = uri_args.port
+
+        username = os.getenv("LOCAL_USERNAME")
+        password = os.getenv("local_password")
+        database = os.getenv("local_database")
+        hostname = "localhost"
+        port = os.getenv("local_port")
+
         self.conn = psycopg2.connect(
             database=database,
             user=username,
