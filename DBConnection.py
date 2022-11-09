@@ -11,10 +11,10 @@ class DBConnection:
         load_dotenv(find_dotenv("cred.env"))
 
         username = os.getenv("LOCAL_USERNAME")
-        password = os.getenv("local_password")
-        database = os.getenv("local_database")
+        password = os.getenv("LOCAL_PASSWORD")
+        database = os.getenv("LOCAL_DATABASE")
         hostname = "localhost"
-        port = os.getenv("local_port")
+        port = os.getenv("LOCAL_PORT")
 
         self.conn = psycopg2.connect(
             database=database,
