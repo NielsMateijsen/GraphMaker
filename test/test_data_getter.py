@@ -9,7 +9,7 @@ import data_getter
 class MyTestCase(unittest.TestCase):
     @staticmethod
     def test_query_string_not_empty():
-        assert data_getter.graph_query != ""
+        assert data_getter.year_graph_query != ""
 
     @staticmethod
     def test_yaml_test_string():

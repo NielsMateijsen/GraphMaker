@@ -1,5 +1,6 @@
 import graph_creator
 import time
+import data_getter
 
 if __name__ == '__main__':
     while True:

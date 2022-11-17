@@ -5,7 +5,8 @@ from DBConnection import DBConnection
 import yaml
 from datetime import datetime
 
-graph_query = ""
+year_graph_query = ""
+sum_per_day_query = ""
 number_to_month = {
     1: "januari",
     2: "februari",
@@ -23,16 +24,27 @@ number_to_month = {
 os.chdir(os.path.dirname(__file__))
 with open('sql.yaml') as f:
     try:
-        graph_query = yaml.safe_load(f)["sql"]["graph"]
+        sql = yaml.safe_load(f)["sql"]
+        year_graph_query = sql["yearGraph"]
+        sum_per_day_query = sql["sumPerDay"]
     except yaml.YAMLError as e:
         print(e)
 
 
-def get_chart_data(is_guest):
+def get_sum_per_day():
     conn = DBConnection()
-    if graph_query == "":
+    if year_graph_query == "":
         raise Exception("EXCEPTION: EMPTY DATA QUERY")
-    df = conn.query(graph_query.format(str(is_guest)))
+    df = conn.query(sum_per_day_query)
+    conn.close()
+    return df
+
+
+def get_year_chart_data(is_guest):
+    conn = DBConnection()
+    if year_graph_query == "":
+        raise Exception("EXCEPTION: EMPTY DATA QUERY")
+    df = conn.query(year_graph_query.format(str(is_guest)))
     conn.close()
     sort_order = get_sort_order()
     df["month"] = df["month"].apply(int)
