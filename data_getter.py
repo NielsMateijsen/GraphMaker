@@ -23,12 +23,12 @@ number_to_month = {
 os.chdir(os.path.dirname(__file__))
 with open('sql.yaml') as f:
     try:
-        graph_query = yaml.safe_load(f)["sql"]["graph"]
+        graph_query = yaml.safe_load(f)["sql"]["yearGraph"]
     except yaml.YAMLError as e:
         print(e)
 
 
-def get_chart_data(is_guest):
+def get_year_chart_data(is_guest):
     conn = DBConnection()
     if graph_query == "":
         raise Exception("EXCEPTION: EMPTY DATA QUERY")

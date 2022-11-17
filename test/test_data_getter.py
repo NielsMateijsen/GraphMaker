@@ -20,7 +20,7 @@ class MyTestCase(unittest.TestCase):
 
     @staticmethod
     def test_get_data_not_none():
-        data = data_getter.get_chart_data(False)
+        data = data_getter.get_year_chart_data(False)
         assert len(data) > 0
 
 
